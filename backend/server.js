@@ -74,22 +74,55 @@ cs340_project_server.get("/api/get-teachers/", (req, res) => {
         }
     });
 });
-
-
-
-cs340_project_server.get("/api/delete-teacher/:id", (req, res) => {
-    console.log(req.params.id)
+cs340_project_server.post("/api/add-teacher/", (req, res) => {
     DB.query(`
-       SELECT * FROM Courses;
+    INSERT INTO Teachers (firstName, lastName, department)
+    VAlUES ("${req.body.firstName}", "${req.body.lastName}", "${req.body.department}"); 
     `, (err, result) => {
         if (err) {
-            // console.log(err);
+            throw Error(err);
+        }
+        else {
+            console.log(result
+            )
+        }
+    }
+
+    )
+})
+
+
+
+cs340_project_server.delete("/api/delete-teacher/:id", (req, res) => {
+    console.log(req.params.id);
+    DB.query(`SET FOREIGN_KEY_CHECKS=0;`, (err, res) => {
+        if (err) {
             throw Error(err);
         } else {
-            // console.log(result)
-            res.json(result);
+            console.log(res)
+            DB.query(`
+           
+           DELETE FROM Teachers WHERE teacherID = ${req.body.id};
+           `, (err, result) => {
+                // SELECT * from Teachers
+                if (err) {
+                    // console.log(err);
+                    throw Error(err);
+                } else {
+                    console.log(result)
+                    // res.json(result);
+                    DB.query(`
+                    SET FOREIGN_KEY_CHECKS=1;`, (err, res) => {
+                        if (err) {
+                            throw Error(err);
+                        } else {
+                            console.log(res)
+                        }
+                    })
+                }
+            });
         }
-    });
+    })
 });
 
 cs340_project_server.get("/api/get-courses", (req, res) => {
@@ -175,8 +208,6 @@ cs340_project_server.get("/api/course/:courseTitle", (req, res) => {
 });
 
 cs340_project_server.put("/api/update-teacher/:id", (req, result) => {
-    console.log(req.body.teacherID, 'asdf')
-    console.log(req.params.id, 'id')
     DB.query(`UPDATE Teachers
     set firstName = "${req.body.firstName}", lastName = "${req.body.lastName}", department = "${req.body.department}"
     where teacherID = ${req.params.id} `, (err, res) => {

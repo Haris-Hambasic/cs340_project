@@ -5,14 +5,15 @@ $color1: #d73f09;
 .teachers-page-outer-container {
     font-family: 'Playfair Display', serif;
     font-weight: bold;
-    background: linear-gradient(
-        to right bottom,
-        rgba(255, 255, 255, 0.7),
-        rgba(255, 255, 255, .4)
-    );
+    background: linear-gradient(to right bottom,
+            rgba(255, 255, 255, 0.7),
+            rgba(255, 255, 255, .4));
     z-index: 400;
 }
 
+button.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.MuiButtonBase-root.add.css-sghohy-MuiButtonBase-root-MuiButton-root {
+    background-color: #d73f09;
+}
 
 .teachers-page-inner-container {}
 
