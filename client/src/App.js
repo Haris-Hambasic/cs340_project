@@ -11,6 +11,8 @@ import { Students } from "./pages/Students/Students";
 import { Courses } from "./pages/Courses/Courses";
 import { Course } from "./pages/Course/Course";
 import { BuildingsOnCampus } from "./pages/BuildingsOnCampus/BuildingsOnCampus";
+import { StudentEdit } from "./pages/StudentEdit/StudentEdit";
+import { CreateStudent } from "./pages/CreateStudent/CreateStudent";
 
 import './App.scss';
 
@@ -29,6 +31,8 @@ const App = () => {
                     <Route path="/buildings-on-campus" element={<BuildingsOnCampus />} />
                     <Route path="/courses" element={<Courses />} />
                     <Route path="/course/:courseTitle" element={<Course />} />
+                    <Route path="/student-edit/:studentID" element={<StudentEdit />} />
+                    <Route path="/create-student" element={<CreateStudent />} />
                 </Routes>
             </BrowserRouter>
         </div>

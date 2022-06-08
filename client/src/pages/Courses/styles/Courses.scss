@@ -13,6 +13,37 @@ $color1: #d73f09;
     z-index: 400;
 }
 
+.courses-add-course {
+    background-color: $color1;
+    width: 50%;
+    height: fit-content;
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+    border-radius: 9px;
+}
+
+.course-add-course-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #fff;
+    padding: .5rem 1.35rem;
+    margin-bottom: 1rem;
+}
+
+.course-add-course-btn {
+    background-color: #fff;
+    padding: .35rem 1rem;
+    border-radius: 3px;
+    width: 75%;
+    text-align: center;
+}
+
+.course-add-course-btn:hover {
+    cursor: pointer;
+}
 
 .courses-page-inner-container {}
 
@@ -28,7 +59,7 @@ $color1: #d73f09;
     margin-top: 5rem;
     line-height: 1.35;
     margin-bottom: 1.35rem;
-    color: green;
+    color: $color1;
 }
 
 .courses-hero-statement {

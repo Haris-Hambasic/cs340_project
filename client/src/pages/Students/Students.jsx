@@ -1,5 +1,6 @@
 // CORE
 import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 // STYLES
 import "./styles/Students.scss";
@@ -9,16 +10,24 @@ import { Header } from "../../components/Header/Header";
 
 const Students = () => {
     const [students, setStudents] = useState(null);
+    let navigate = useNavigate();
 
     useEffect(() => {
-        // fetch("http://localhost:3450/api/students", { method: "GET" })
-        fetch("/api/students/", { method: "GET" })
+        fetch("http://localhost:3450/api/students", { method: "GET" })
+        // fetch("/api/students/", { method: "GET" })
             .then(response => response.json())
             .then(data => {
                 console.log(data);
                 setStudents(data);
             });
     }, []);
+
+    const deleteStudent = (studentID) => {
+        console.log("The studentID is " + studentID);
+        fetch(`http://localhost:3450/api/delete-student/${studentID}`, { method: "DELETE" })
+            .then(response => response.json())
+            .then(students => setStudents(students));
+    };
 
     return (
         <div className="students-page-outer-container">
@@ -34,10 +43,7 @@ const Students = () => {
                             </p>
                         </div>
                         <div className="students-hero-add-form">
-                            <form>
-                                <label>Student</label>
-                                <input type="text" placeholder="Student's name" />
-                            </form>
+                            <Link to={"/create-student"} className="create-student-btn">Create Student</Link>
                         </div>
                     </div>
                 </div>
@@ -49,9 +55,15 @@ const Students = () => {
                                 students !== null
                                 ?
                                 students.map(student => (
-                                    <div key={student.studentID} className="student">
-                                        <h3 className="student-name">{student.firstName} {student.lastName}</h3>
-                                        <p className="student-major">-{student.studentMajor}-</p>
+                                    <div className="student-container">
+                                        <div key={student.studentID} className="student">
+                                            <h3 className="student-name">{student.firstName} {student.lastName}</h3>
+                                            <p className="student-major">-{student.studentMajor}-</p>
+                                            <div className="student-options">
+                                                <p className="student-edit" onClick={() => navigate(`/student-edit/${student.studentID}`)}>Edit</p>
+                                                <p className="student-delete" onClick={() => deleteStudent(student.studentID)}>Delete</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 ))
                                 : null

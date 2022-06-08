@@ -1,6 +1,6 @@
 // CORE
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // STYLES
 import "./styles/Courses.scss";
@@ -11,6 +11,10 @@ import { Header } from "../../components/Header/Header";
 const Courses = () => {
     const [courses, setCourses] = useState(null);
     const [selectedCourse, setSelectedCourse] = useState("");
+
+    const [courseTitle, setCourseTitle] = useState(null);
+    const [courseProfessor, setCourseProfessor] = useState(null);
+    const [courseDepartment, setCourseDepartment] = useState(null);
 
     useEffect(() => {
         // fetch("http://localhost:3450/get-courses", {
@@ -52,12 +56,27 @@ const Courses = () => {
                     })
                         .then(response => response.json())
                         .then(data => {
-                            console.log(data);
+                            console.log("HERE IS DAS DATA:", data);
                             setCourses(data);
                             setSelectedCourse(data[0].courseTitle);
                         });
             })
     }
+
+    const handleAddCourse = () => {
+        // fetch("http://localhost:3450/api/add-course", {
+        fetch("/api/add-course", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "courseTitle": courseTitle,
+                "courseProfessor": courseProfessor,
+                // "courseDepartment": courseDepartment
+            })
+        })
+    };
 
     return (
         <div className="courses-page-outer-container">
@@ -71,6 +90,13 @@ const Courses = () => {
                                 Search courses available at Oregon State University and sign up
                                 for the courses you're interested in.
                             </p>
+                        </div>
+                        <div className="courses-add-course">
+                            <h2 className="course-add-course-title">Create a Course</h2>
+                            <input className="course-add-course-course-title" placeholder="Course Title" onChange={(e) => setCourseTitle(e.target.value)} />
+                            {/* <input className="course-add-course-course-professor" placeholder="Course Professor" onChange={(e) => setCourseProfessor(e.target.value)} /> */}
+                            {/* <input className="course-add-course-course-department" placeholder="Course Department" onChange={(e) => setCourseDepartment(e.target.value)} /> */}
+                            <p className="course-add-course-btn" onClick={handleAddCourse}>Add Course</p>
                         </div>
                         {/* <div className="courses-hero-add-form">
                             <form>
