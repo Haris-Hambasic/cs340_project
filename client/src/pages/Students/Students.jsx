@@ -13,8 +13,8 @@ const Students = () => {
     let navigate = useNavigate();
 
     useEffect(() => {
-        fetch("http://localhost:3450/api/students", { method: "GET" })
-        // fetch("/api/students/", { method: "GET" })
+        // fetch("http://localhost:3450/api/students", { method: "GET" })
+        fetch("/api/students/", { method: "GET" })
             .then(response => response.json())
             .then(data => {
                 console.log(data);
@@ -24,7 +24,10 @@ const Students = () => {
 
     const deleteStudent = (studentID) => {
         console.log("The studentID is " + studentID);
-        fetch(`http://localhost:3450/api/delete-student/${studentID}`, { method: "DELETE" })
+        // fetch(`http://localhost:3450/api/delete-student/${studentID}`, { method: "DELETE" })
+        //     .then(response => response.json())
+        //     .then(students => setStudents(students));
+        fetch(`/api/delete-student/${studentID}`, { method: "DELETE" })
             .then(response => response.json())
             .then(students => setStudents(students));
     };
