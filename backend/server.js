@@ -293,7 +293,7 @@ cs340_project_server.put("/api/update-student-information", (req, res) => {
     });
 });
 
-cs340_project_server.delete("/api/delete-student/:studentID", (req, res) => {
+cs340_project_server.delete("/api/delete-student/:studentID/", (req, res) => {
     console.log("deleting student...");
     console.log(req.params.studentID);
     DB.query(`
@@ -323,7 +323,7 @@ cs340_project_server.post("/api/create-student", (req, res) => {
     `)
 });
 
-cs340_project_server.post("/api/add-course", (req, res) => {
+cs340_project_server.post("/api/add-course/", (req, res) => {
     DB.query(`
         INSERT INTO Courses(courseTitle, courseTeacher, courseCapacity, building, courseDescription)
         VALUES("${req.body.courseTitle}", 1, 100, 4, "");

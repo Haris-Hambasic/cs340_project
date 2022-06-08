@@ -40,7 +40,7 @@
 }
 
 .students-list-inner-container {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -52,25 +52,32 @@
 }
 
 .students-list-collection {
-  width: 60%;
+  width: 100%;
   margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .student {
-  width: 45%;
+  width: 60%;
   text-align: center;
+  margin: 0 auto;
   padding: 1rem;
   margin-bottom: 3rem;
   -webkit-box-shadow: #f0f0f9 1px 1px 15px;
           box-shadow: #f0f0f9 1px 1px 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .student:hover {
@@ -80,6 +87,112 @@
 .student-name {
   color: #d73f09;
   font-size: 1.35rem;
+}
+
+.student-container {
+  width: 100%;
+}
+
+.student-options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.student-edit {
+  margin-right: 1rem;
+  color: #fff;
+  border-style: solid;
+  border-width: 2px;
+  border-color: transparent;
+  border-radius: 9px;
+  background-color: #424242;
+  padding: .35rem 1rem;
+}
+
+.student-delete {
+  color: #fff;
+  border-style: solid;
+  border-width: 2px;
+  border-color: transparent;
+  border-radius: 9px;
+  background-color: #c70000;
+  padding: .35rem 1rem;
+}
+
+.student-edit-inner-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+}
+
+.student-edit-title {
+  text-align: center;
+  font-size: 4rem;
+  word-spacing: 1rem;
+  margin-bottom: 2rem;
+  color: #444;
+}
+
+.student-info-container {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.student-info-name {
+  border: none;
+  border-bottom-style: solid;
+  border-bottom-color: #d73f09;
+  border-bottom-width: 2px;
+  margin-bottom: 2rem;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.student-info-major {
+  border: none;
+  border-bottom-style: solid;
+  border-bottom-color: #d73f09;
+  border-bottom-width: 2px;
+  margin-bottom: 2rem;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.update-student-information-btn {
+  background-color: #d73f09;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: .5rem 1.5rem;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: .5px;
+  border-radius: 3px;
+}
+
+.update-student-information-btn:hover {
+  cursor: pointer;
 }
 
 @media (min-width: 1080px) {

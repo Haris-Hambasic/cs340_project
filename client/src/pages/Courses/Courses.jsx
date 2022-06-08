@@ -42,7 +42,7 @@ const Courses = () => {
     const handleDeleteCourse = (courseID) => {
         console.log("courseID:", courseID);
         // fetch(`http://localhost:3450/api/course/delete/${courseID}`, {
-        fetch(`/api/course/delete/${courseID}`, {
+        fetch(`/api/course/delete/${courseID}/`, {
             method: "DELETE"
         })
             .then(response => {
@@ -64,8 +64,8 @@ const Courses = () => {
     }
 
     const handleAddCourse = () => {
-        // fetch("http://localhost:3450/api/add-course", {
-        fetch("/api/add-course", {
+        // fetch("http://localhost:3450/api/add-course/", {
+        fetch("/api/add-course/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

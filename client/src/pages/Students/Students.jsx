@@ -27,7 +27,7 @@ const Students = () => {
         // fetch(`http://localhost:3450/api/delete-student/${studentID}`, { method: "DELETE" })
         //     .then(response => response.json())
         //     .then(students => setStudents(students));
-        fetch(`/api/delete-student/${studentID}`, { method: "DELETE" })
+        fetch(`/api/delete-student/${studentID}/`, { method: "DELETE" })
             .then(response => response.json())
             .then(students => setStudents(students));
     };
